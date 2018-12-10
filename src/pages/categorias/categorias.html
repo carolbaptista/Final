@@ -1,16 +1,59 @@
 
 <ion-header>
-    <ion-navbar>
-  <button ion-button menuToggle color="dark">
+    <ion-navbar color="dark">
+  <button ion-button menuToggle color="white">
     <ion-icon name="menu"></ion-icon>
   </button>
   
-    <ion-title>Categorias</ion-title>
+    <ion-title>Perfil
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="corpo">
+ 
+ 
+    <ion-avatar item-start >
+      <img src="https://aberturasimples.com.br/wp-content/uploads/2015/10/empresrios.jpg"/>
+    </ion-avatar>
+    <ion-card style="border-radius: 30px">
+    <ion-card-content class="corpcard">
+      <ion-card-title style="color: white">
+       Roberto
+        </ion-card-title>
+      <ion-item color="dark">
+          <ion-label>Online</ion-label>
+          <ion-toggle  color="secondary" checked="true"></ion-toggle>
+        </ion-item> 
+        <hr/>
+         <p  style="color: white">
+       Organizo os portfolios da empresa
+      </p>
+    
+    </ion-card-content>
+  </ion-card >
+
+
+  <ion-card class="corpcard" style="border-radius: 30px; ">
+
+    <ion-item class="corpcard" >
+      <ion-avatar item-start>
+        <img src="http://www.radiosajnet.com.br/files/2018/07/itau-860x400.jpg">
+      </ion-avatar>
+      <h2 style="color: white">Empresa ITAÚ</h2>
+      <p>Projeto criado em 10/12/2018</p>
+    </ion-item>
+
+    <ion-card-content  class="corpcard" >
+      <p style="color: white">Banco nacional</p>
+    </ion-card-content>
+    
+    <button ion-button color="light" clear (click)='goEmpresarial()'>Ver projeto</button>
+</ion-card>  
+
+
 
 </ion-content>
+

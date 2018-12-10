@@ -22,4 +22,7 @@ export class CategoriasPage {
     console.log('ionViewDidLoad CategoriasPage');
   }
 
+  goEmpresarial(){
+    this.navCtrl.push('CEmpresarialPage');
+  }
 }

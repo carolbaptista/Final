@@ -8,6 +8,8 @@ import { FirebaseConfig } from '../config/firebase.config';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { StorageService } from '../services/storage.service';
+import { AngularFireStorageModule} from 'angularfire2/storage';
+import { AngularFirestoreModule} from 'angularfire2/firestore';
 
 @NgModule({
   declarations: [
@@ -16,8 +18,10 @@ import { StorageService } from '../services/storage.service';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(FirebaseConfig) // Inicializa o firebase conforme 
-                                                    // firebase.config.ts
+    AngularFireModule.initializeApp(FirebaseConfig),// Inicializa o firebase conforme // firebase.config.ts       
+    AngularFirestoreModule,
+    AngularFireStorageModule
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [

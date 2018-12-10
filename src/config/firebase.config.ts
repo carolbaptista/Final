@@ -1,8 +1,8 @@
   export const FirebaseConfig = {
-    apiKey: "AIzaSyA9R3fNmXy695ECVTTv8O7XivtNxe_kaBc",
-    authDomain: "testelogin-7857e.firebaseapp.com",
-    databaseURL: "https://testelogin-7857e.firebaseio.com",
-    projectId: "testelogin-7857e",
-    storageBucket: "testelogin-7857e.appspot.com",
-    messagingSenderId: "253901890679"
+    apiKey: "AIzaSyDte820_9GF7gKtl8za-JE5B4R53ofNkj8",
+    authDomain: "projeto-teste-682e8.firebaseapp.com",
+    databaseURL: "https://projeto-teste-682e8.firebaseio.com",
+    projectId: "projeto-teste-682e8",
+    storageBucket: "projeto-teste-682e8.appspot.com",
+    messagingSenderId: "460480234282"
   };

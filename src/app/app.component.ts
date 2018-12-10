@@ -15,7 +15,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: string}>;
 
-  constructor(public platform: Platform, 
+  constructor(public platform: Platform,
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
     public firebaseauth : AngularFireAuth) {
@@ -24,8 +24,16 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: 'HomePage' },
-      { title: 'Sair', component: 'LogoffPage' }
+    
+      { title: 'Perfil', component: 'CategoriasPage' },
+      { title: 'Projetos', component: 'ProjetosPage'},
+      { title: 'Criar', component: 'CriarPage' },
+      { title: 'Sair', component: 'LogoffPage' },
+      
+
+      
+      
+
     ];
 
   }

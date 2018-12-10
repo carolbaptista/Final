@@ -56,7 +56,4 @@ export class HomePage {
     msg.setMessage(texto);
     msg.present();
   }
-
-
-
 }
