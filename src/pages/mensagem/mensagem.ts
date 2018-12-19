@@ -20,14 +20,20 @@ import { AngularFireStorage } from 'angularfire2/storage';
 })
 export class MensagemPage {
 
+  mensagens: any[] = new Array();
   formGroup : FormGroup;
+  imagem : any;
+
+  firestore = firebase.firestore();
+  settings = {timestampsInSnapshots: true};
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
-    public firestore: AngularFirestore,
     public firebaseauth: AngularFireAuth,
     public storage: AngularFireStorage,
     public formBuilder: FormBuilder) {
+
+      this.firestore.settings(this.settings);
 
       this.formGroup = this.formBuilder.group({
         id: ['', [Validators.required]],
@@ -45,8 +51,45 @@ export class MensagemPage {
 
     cadastrar(){
       //cria um id unico
-      let id = this.firestore.createId();
-      this.formGroup.controls['id'].setValue(
-        this.firebaseauth.auth.currentUser.uid);
+     
+      this.formGroup.controls['id'].setValue(this.firebaseauth.auth.currentUser.uid);
+
+      this.firestore.collection("cadastro").add(
+        this.formGroup.value
+      ).then(ref => {
+
+        console.log("Cadastrado com sucesso");
+        console.log(ref.id);
+        this.add(ref.id)
+      }).catch(err => {
+        
+        console.log(err.message);
+      });
+    }
+
+    enviaArquivo(event){
+      // Pega o arquivo 
+      this.imagem = event.srcElement.files[0];
+    }
+  
+    add(id : string){
+     
+      // Diretório + caminho imagem no servidor
+      let caminho = firebase.storage().ref().child(`Empresarial/${id}.jpg`);
+      // Executa o upload
+      caminho.put(this.imagem).then(resp => {
+        // Se sucesso, pega a url para download da imagem
+        caminho.getDownloadURL().then(url=>{
+          // adicionar a url da imagem no form
+          //this.formGroup.controls['imagem'].setValue(this.msg = url);
+          // Cadastra os dados no Firestone
+          console.log("imagem enviada")
+          this.firestore.collection("cadastro")
+            .doc(id).update({'foto' : url});
+        });
+      }).catch(err => {
+        //Houve algum erro
+        console.log(err.message);
+      })
     }
 }

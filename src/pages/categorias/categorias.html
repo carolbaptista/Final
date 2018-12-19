@@ -36,24 +36,22 @@
   </ion-card >
 
 
-  <ion-card class="corpcard" style="border-radius: 30px; ">
+ 
+   
 
-    <ion-item class="corpcard" >
-      <ion-avatar item-start>
-        <img src="http://www.radiosajnet.com.br/files/2018/07/itau-860x400.jpg">
-      </ion-avatar>
-      <h2 style="color: white">Empresa ITAÚ</h2>
-      <p>Projeto criado em 10/12/2018</p>
-    </ion-item>
-
-    <ion-card-content  class="corpcard" >
-      <p style="color: white">Banco nacional</p>
-    </ion-card-content>
-    
-    <button ion-button color="light" clear (click)='goEmpresarial()'>Ver projeto</button>
-</ion-card>  
-
-
+    <ion-row>
+      <ion-card col-6 *ngFor="let ce of categoriaEmpresarial">
+        <ion-card-header>
+            <h1 class="h1">
+              {{ce.nome}}
+            </h1>
+            <img src="{{ce.foto}}" alt="" >
+        </ion-card-header>
+        <h3>
+         {{ce.descricao}}
+        </h3>
+      </ion-card>
+    </ion-row>
 
 </ion-content>
 

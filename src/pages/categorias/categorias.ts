@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import firebase from 'firebase';
 
 /**
  * Generated class for the CategoriasPage page.
@@ -14,7 +15,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'categorias.html',
 })
 export class CategoriasPage {
-
+  categoriaEmpresarial: any[] = new Array();
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -24,5 +25,15 @@ export class CategoriasPage {
 
   goEmpresarial(){
     this.navCtrl.push('CEmpresarialPage');
+  }
+  getList() {
+    var postRef = firebase.firestore()
+      .collection("categoriaEmpresarial");
+
+    postRef.get().then(query => {
+      query.forEach(doc => {
+        this.categoriaEmpresarial.push(doc.data());
+      });
+    });
   }
 }

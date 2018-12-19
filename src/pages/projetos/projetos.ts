@@ -16,7 +16,6 @@ import firebase from 'firebase';
 export class ProjetosPage {
 
   categoriaEmpresarial: any[] = new Array(); //categoria no firebase
-
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -25,9 +24,9 @@ export class ProjetosPage {
     console.log('ionViewDidLoad ProjetosPage');
   }
 
-  getList(){
+  getList() {
     var postRef = firebase.firestore()
-    .collection("categoriaEmpresarial");
+      .collection("categoriaEmpresarial");
 
     postRef.get().then(query => {
       query.forEach(doc => {
@@ -35,4 +34,20 @@ export class ProjetosPage {
       });
     });
   }
+
+  detalhe(id : string){
+    console.log(id);
+    this.navCtrl.push("MensagemDetalhePage",{'id' : id});
+  }
+
+  goEmpresarial(){
+    this.navCtrl.push('CriarPage');
+  }
+
+
+  goEmp(){
+    this.navCtrl.push('CEmpresarialPage');
+  }
+
+
 }

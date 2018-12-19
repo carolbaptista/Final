@@ -1,54 +1,31 @@
-<!--
-  Generated template for the ProjetosPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-
 <ion-header>
 
   <ion-navbar color="outros">
     <button ion-button menuToggle color="white">
       <ion-icon name="menu"></ion-icon>
     </button>
-
-    <ion-title>Projetos
+    <ion-title>
+      Projetos
     </ion-title>
   </ion-navbar>
 </ion-header>
 
+<ion-content padding class="fundo" class="card-background-page">
 
-<ion-content padding class="fundo">
-
-
-
-
-
-  <button ion-button default full class="cor" block>Criar novo projeto</button>
-
-
-  <ion-content class="card-background-page">
-
-    <ion-grid>
-      <ion-row>
-
-        <ion-col col-4 *ngFor="let ce of categoriaEmpresarial">
-          <div>
-            <div class="card-title"><h5>{{ce.nome}}</h5></div>
-            <img src="{{ce.foto}}" />
-            <div class="card-subtitle"><h5>{{ce.descricao}}</h5></div>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
-
-
-
-
-    <hr/>
-
-
-  </ion-content>
-
+  <button ion-button default full class="cor" block (click)="goEmpresarial()" >Criar novo projeto</button>
+  <ion-row>
+  <ion-card col-6 *ngFor="let ce of categoriaEmpresarial">
+    <ion-card-header>
+        <h1 class="h1">
+          {{ce.nome}}
+        </h1>
+        <img src="{{ce.foto}}" alt="" placeholder="JPG 200X200">
+    </ion-card-header>
+    <h3>
+     {{ce.descricao}}
+    </h3>
+    <button ion-button default full class="cor" block (click)="goEmp()" >Ver</button>
+  </ion-card>
+</ion-row>
+  <hr/>
 </ion-content>

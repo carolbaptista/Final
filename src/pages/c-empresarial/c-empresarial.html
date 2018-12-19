@@ -3,85 +3,40 @@
         <button ion-button menuToggle color="white">
               <ion-icon name="menu"></ion-icon>
             </button>
-        <ion-title>ITAÚ</ion-title>
+        <ion-title>Criação de conteúdo</ion-title>
       </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content class="container">
 
-
-  <ion-list>
-    <ion-item>
-     <h1 class="container"> Funcionários</h1>
-     <hr>
-    </ion-item>
-  </ion-list>
+    <h1>Cadastro de funcionário, local ou observação</h1>
+<hr>
+    
+<form [formGroup]="formGroup" (ngSubmit)="cadastrarF()">
     <ion-list>
-        <ion-item>
-          <ion-thumbnail item-start>
-            <img src="https://aberturasimples.com.br/wp-content/uploads/2015/10/empresrios.jpg">
-          </ion-thumbnail>
-          <h2>José</h2>
-          <p>Trabalha na área de TI, suporte</p>
-          <button ion-button clear item-end>Apagar</button>
-        </ion-item>
-      </ion-list>
-      <ion-list>
-          <ion-item>
-            <ion-thumbnail item-start>
-              <img src="https://aberturasimples.com.br/wp-content/uploads/2015/10/empresrios.jpg">
-            </ion-thumbnail>
-            <h2>Carla</h2>
-            <p>Trabalha na área do financeiro, secretária</p>
-            <button ion-button clear item-end>Apagar</button>
-          </ion-item>
-        </ion-list>
-
-
-        <ion-list>
-    <ion-item>
-      <hr>
-      <h1 class="container"> Locais</h1>
-      <hr>
-    </ion-item>
-  </ion-list>
-      <ion-list>
-          <ion-item>
-            <ion-thumbnail item-start>
-              <img src="https://aberturasimples.com.br/wp-content/uploads/2015/10/empresrios.jpg">
-            </ion-thumbnail>
-            <h2>TI</h2>
-            <p>Área de TI, com 44 funcionários</p>
-            <button ion-button clear item-end>Apagar</button>
-          </ion-item>
-        </ion-list>
-        <ion-list>
-            <ion-item>
-              <ion-thumbnail item-start>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhiky6uYeYFMS9RZO4DthUyY5Nw0Jln1rdIsyLGchXTKJ_jZyR-g"  >       </ion-thumbnail>
-              <h2>Financeiro</h2>
-              <p>Área Financeira, com 23 funcionários</p>
-              <button ion-button clear item-end>Apagar</button>
-            </ion-item>
-          </ion-list>
-
-  <ion-list>
-    <ion-item>
-      <hr>
-      <h1 class="container"> Observações</h1>
-      <hr>
-    </ion-item>
-  </ion-list>
-
-  <ion-list>
-    
 
         <ion-item>
-          <ion-label>Digite</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-     
-    
-  </ion-list>
+            Imagem: <input type="file" formControlName="imagem" (change)="enviaArquivoF($event)" />
+          </ion-item>
 
+      <ion-item>
+        <ion-label fixed>Título:</ion-label>
+        <ion-input type="text" required placeholder="Funcionário, local ou observação" formControlName="titulo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Descrição:</ion-label>
+        <ion-input type="text" required formControlName="texto"></ion-input>
+      </ion-item>
+
+      <button ion-button color="dark" clear>Criar</button>
+
+
+    </ion-list>
+  </form>
+
+  <ion-card *ngFor="let msg of mensagens">
+    {{msg.mensagem}}
+    <img src="{{msg.imagem}}" (click)="detalhe(msg.id)">
+    </ion-card>
 
 </ion-content>
